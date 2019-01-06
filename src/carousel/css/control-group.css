@@ -1,18 +1,19 @@
 .carousel__control-group {
   display: flex;
   justify-content: center;
-  background: grey;
+  background: #eaeee7;
   padding: 50px 0;
 }
 
 .carousel__control-group--button {
   font-size: 36px;
   color: white;
-  background: blue;
+  background: #3f729d;
   padding: 10px 40px;
   border: 0;
   margin: 5px;
   font-family: inherit;
+  outline: none;
 }
 
 .carousel__control-group--button.left {
