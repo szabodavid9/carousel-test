@@ -1,7 +1,12 @@
 
-.carousel-item__container{
+.carousel-item__container {
   margin: 0 20px;
   width: 20%;
+}
+
+.carousel-item__images {
+  width: 100%;
+  height: 100%;
 }
 
 .carousel-item__container--inner {

@@ -1,13 +1,10 @@
 import React from 'react';
 import '../css/carousel-item.css';
 
-const CarouselItem = () => {
-
+const CarouselItem = ({ image }) => {
   return (
     <div className="carousel-item__container">
-      <div className="carousel-item__container--inner">
-        <h2 className="carousel-item__title">Image title </h2>
-      </div>
+      <img className="carousel-item__images" src={image.webformatURL} alt=""/>
     </div>
   );
 };
