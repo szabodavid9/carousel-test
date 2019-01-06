@@ -1,0 +1,11 @@
+.carousel-container {
+  display: flex;
+  width: 100%;
+}
+
+.carousel__title {
+  font-size: 70px;
+  padding-left: 20px;
+  color: blue;
+  background-color: grey; 
+} 

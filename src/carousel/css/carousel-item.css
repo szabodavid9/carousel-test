@@ -1,0 +1,18 @@
+
+.carousel-item__container{
+  margin: 0 20px;
+  width: 20%;
+}
+
+.carousel-item__container--inner {
+  background-color: green;
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  position: relative;
+}
+
+.carousel-item__title {
+  color: blue;
+  font-size: 36px;
+  font-weight: 400;
+}
