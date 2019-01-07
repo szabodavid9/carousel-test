@@ -1,3 +1,61 @@
 .App {
   font-family: 'Ropa Sans';
 }
+
+.navigation-arrow-container{
+  display: none;
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .carousel-item__container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 560px;
+    flex: 0 0 auto;
+  }
+
+  .carousel-container {
+    position: relative;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .navigation-arrow-container {
+    background: #a4d9c4;
+    display: flex;
+    
+    height: 160px;
+    width: 90px;
+
+    position: absolute;
+    top: 40%;
+    transform: translate(0,-50%);
+  }
+
+  .navigation-arrow-container.left{
+    justify-content: flex-start;
+    left: 0;
+
+    border-bottom-right-radius: 90px;
+    border-top-right-radius: 90px;
+  }
+
+  .navigation-arrow-container.left > img {
+    transform: rotate(180deg);
+  }
+
+  .navigation-arrow-container.right{
+    justify-content: flex-end;
+    right: 0;
+
+    border-bottom-left-radius: 90px;
+    border-top-left-radius: 90px;
+  }
+
+  .carousel__control-group {
+    display: none;
+  }
+}

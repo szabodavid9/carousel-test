@@ -5,9 +5,20 @@ import CarouselItem from './components/Carosusel-item';
 import './css/carousel.css';
 import ControlGroup from './components/Control-group';
 import LoaderHOC from '../HOC/LoaderHOC';
+import arrow from '../assets/images/arrow.svg';
+import '../App.css';
+import { prevImage, nextImage } from './actions/control-group-actions';
 
 class Carousel extends Component {
  
+  onPrev = () => {   
+    this.props.prevImage();
+   }
+   
+   onNext = () => {
+    this.props.nextImage();
+   }
+
   generateVisableImages = () => {
     const { images, indexArray } = this.props;
     const visableImages = indexArray.map(itemIndex => images[itemIndex]);
@@ -23,6 +34,18 @@ class Carousel extends Component {
       <div>
         <h1 className="carousel__title"> Carousel Test </h1>
         <div className="carousel-container">
+          <div 
+            className="navigation-arrow-container right"
+            onClick={this.onPrev}
+          >
+            <img className="navigation-arrow" src={arrow} alt=""/>
+          </div>
+          <div 
+            className="navigation-arrow-container left"
+            onClick={this.onNext}
+          >
+            <img className="navigation-arrow" src={arrow} alt=""/>
+          </div>
           {
            visableImages.map(image => (
               <CarouselItem key={image.id} image={image}/>
@@ -41,7 +64,7 @@ const mapStateToProps = (state) => {
 }
 
 const composed = compose(
-  connect(mapStateToProps, null),
+  connect(mapStateToProps, {prevImage, nextImage}),
   LoaderHOC
 );
 
