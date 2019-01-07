@@ -1,7 +1,10 @@
-import { FETCH_IMAGES, PREV_IMAGE, NEXT_IMAGE } from '../../constants';
+import { FETCH_IMAGES, PREV_IMAGE, NEXT_IMAGE, NUMBER_OF_VISABLE_IMAGES } from '../../constants';
+
+const indexArray = Array.from(Array(NUMBER_OF_VISABLE_IMAGES), (_,x) => x);
 
 const initialState = {
-  offset: 0,
+  indexArray,
+  images: null,
 };
 
 export default (state = initialState, action) => {
@@ -11,14 +14,20 @@ export default (state = initialState, action) => {
       return { ...state, images };
     }
     case PREV_IMAGE: {
-      const { offset, images } = state;
-      const newOffset = offset-1 < 0 ? images.length-1 : offset-1;
-      return { ...state, offset: newOffset };
+      const { indexArray, images } = state;
+
+      const newIndexArray = indexArray.map(item => item-1 < 0 ? images.length-1 : item-1 );
+
+      return { ...state, indexArray: newIndexArray };
     }
     case NEXT_IMAGE: {
-      const { offset, images } = state;
-      const newOffset = offset+1 > images.length-1 ? offset+1-images.length : offset+1;
-      return { ...state, offset: newOffset };
+      const { indexArray, images } = state;
+
+      const newIndexArray = indexArray.map(item => 
+        item+1 > images.length-1 ? item+1-images.length : item+1 
+      );
+      
+      return { ...state, indexArray: newIndexArray };
     }
     default: 
       return state;

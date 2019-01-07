@@ -5,36 +5,15 @@ import './css/carousel.css';
 import ControlGroup from './components/Control-group';
 import { fetchImages } from './actions/carousel-actions';
 
-const NUMER_OF_VIEWS = 5;
-
 class Carousel extends Component {
   componentDidMount(){
     this.props.fetchImages();
   }
 
-  generateIndexArray = () => {
-    const {images, offset} = this.props;
-    var indexes = [];
-
-    for (let i=offset; i<NUMER_OF_VIEWS + offset; i = i + 1) {
-      var index = null;
-      if (i > images.length-1) {
-        index = i-images.length;
-      } else if ( i < 0 ) {
-        index = images.length+i
-      } else {
-        index = i;
-      }
-      indexes = [...indexes, index];
-    };
-    return indexes;
-  };
-
   generateVisableImages = () => {
-    const { images } = this.props;
-    const indexes = this.generateIndexArray();
-    const visableImages = indexes.map(indexe => images[indexe]);
-
+    const { images, indexArray } = this.props;
+    const visableImages = indexArray.map(itemIndex => images[itemIndex]);
+    
     return visableImages;
   }
 
@@ -59,8 +38,8 @@ class Carousel extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { images, offset } = state.carousel;
-  return { images, offset };
+  const { images, indexArray } = state.carousel;
+  return { images, indexArray };
 }
 
 export default connect(mapStateToProps, { fetchImages })(Carousel);
