@@ -9,8 +9,11 @@ import arrow from '../assets/images/arrow.svg';
 import '../App.css';
 import { prevImage, nextImage } from './actions/control-group-actions';
 
-class Carousel extends Component {
- 
+export class Carousel extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   onPrev = () => {   
     this.props.prevImage();
    }
